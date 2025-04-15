@@ -51,19 +51,16 @@
       padding-top: 80px;
       text-align: center;
     }
-    .hero {
-      height: 90vh;
-      background: url('your-hero-image.jpg') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
     }
-    .hero h2 {
-      font-size: 3rem;
-      color: white;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 1rem 2rem;
+    .gallery img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
     }
     footer {
       background: #f9f9f9;
@@ -89,8 +86,11 @@
   </header>
 
   <main>
-    <div class="hero">
-      <h2>Repurposed clothing made in San Diego, CA</h2>
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1542068829-1115f7259450?auto=format&fit=crop&w=800&q=80" alt="Editorial 1">
+      <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=800&q=80" alt="Editorial 2">
+      <img src="https://images.unsplash.com/photo-1600180758890-6c9c7b1b2253?auto=format&fit=crop&w=800&q=80" alt="Editorial 3">
+      <img src="https://images.unsplash.com/photo-1585190331039-0f2ef77b7a62?auto=format&fit=crop&w=800&q=80" alt="Editorial 4">
     </div>
   </main>
 
