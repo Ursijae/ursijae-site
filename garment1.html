@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shop | Ursijae</title>
+  <title>Patchwork Denim Jacket | Ursijae</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
@@ -41,31 +41,44 @@
       font-weight: 500;
     }
     main {
-      padding: 4rem 2rem;
       max-width: 1000px;
-      margin: auto;
+      margin: 2rem auto;
+      padding: 2rem;
     }
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    .product {
+      display: flex;
+      flex-direction: column;
       gap: 2rem;
     }
-    .product-card {
-      text-align: center;
+    .product-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
     }
-    .product-card img {
+    .product-images img {
       width: 100%;
       height: auto;
       object-fit: cover;
+    }
+    .product-details {
+      text-align: left;
+    }
+    .product-details h2 {
       margin-bottom: 0.5rem;
     }
-    .product-card p {
-      font-size: 1rem;
-      font-weight: 500;
+    .product-details p.price {
+      font-size: 1.25rem;
+      font-weight: bold;
     }
-    .product-card a {
+    .buy-button {
+      display: inline-block;
+      background-color: #000;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      margin-top: 1rem;
       text-decoration: none;
-      color: inherit;
+      font-weight: 600;
+      border-radius: 4px;
     }
     footer {
       text-align: center;
@@ -91,13 +104,16 @@
   </header>
 
   <main>
-    <h2>Shop</h2>
-    <div class="product-grid">
-      <div class="product-card">
-        <a href="garment1.html">
-          <img src="https://images.unsplash.com/photo-1602810319223-2402608e3f0f?auto=format&fit=crop&w=800&q=80" alt="Patchwork Jacket">
-          <p>Patchwork Denim Jacket – $140</p>
-        </a>
+    <div class="product">
+      <div class="product-images">
+        <img src="https://images.unsplash.com/photo-1602810319223-2402608e3f0f?auto=format&fit=crop&w=800&q=80" alt="Patchwork Jacket 1">
+        <img src="https://images.unsplash.com/photo-1585190331039-0f2ef77b7a62?auto=format&fit=crop&w=800&q=80" alt="Patchwork Jacket 2">
+      </div>
+      <div class="product-details">
+        <h2>Patchwork Denim Jacket</h2>
+        <p class="price">$140.00</p>
+        <p>This one-of-a-kind jacket was handmade from repurposed denim in our San Diego studio. Size Medium. Boxy, relaxed fit. Ships worldwide.</p>
+        <a href="https://square.link/u/example-checkout-link" class="buy-button" target="_blank">Buy Now</a>
       </div>
     </div>
   </main>
