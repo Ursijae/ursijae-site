@@ -66,7 +66,37 @@
       font-size: 0.9rem;
       color: #666;
     }
-  </style>
+  
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+    .popup-box {
+      background: white;
+      padding: 2rem;
+      max-width: 300px;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      position: relative;
+    }
+    .close-popup {
+      position: absolute;
+      top: 0.5rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+</style>
 </head>
 <body>
   <header>
@@ -94,5 +124,46 @@
   <footer>
     &copy; 2025 Ursijae. All rights reserved.
   </footer>
+
+
+<div id="discount-popup" class="popup-overlay">
+  <div class="popup-box">
+    <span class="close-popup" onclick="dismissPopup()">&times;</span>
+    <h2>Subscribe & Get 10% Off</h2>
+    <p>Enter your email below to receive a discount code in your inbox.</p>
+    <form onsubmit="submitEmail(event)">
+      <input type="email" placeholder="Your email" required style="width: 100%; padding: 0.5rem; margin: 1rem 0;">
+      <button type="submit" style="padding: 0.5rem 1rem;">Subscribe</button>
+    </form>
+    <button onclick="dismissPopup()" style="margin-top: 1rem; background: none; border: none; color: #999; cursor: pointer;">Not now</button>
+  </div>
+</div>
+
+<script>
+  function closePopup() {
+    document.getElementById('discount-popup').style.display = 'none';
+  }
+
+  function submitEmail(e) {
+    e.preventDefault();
+    alert('Thank you for subscribing! Your discount code is URSI10.');
+    localStorage.setItem('popupDismissed', 'true');
+    closePopup();
+  }
+
+  function dismissPopup() {
+    localStorage.setItem('popupDismissed', 'true');
+    closePopup();
+  }
+
+  window.onload = function() {
+    if (!localStorage.getItem('popupDismissed')) {
+      setTimeout(() => {
+        document.getElementById('discount-popup').style.display = 'flex';
+      }, 1000);
+    }
+  };
+</script>
+
 </body>
 </html>
