@@ -146,8 +146,13 @@
 
 <script>
   function dismissPopup() {
-    
     document.getElementById('discount-popup').style.display = 'none';
+    document.getElementById('reopen-popup').style.display = 'block';
+  }
+
+  function reopenPopup() {
+    document.getElementById('discount-popup').style.display = 'flex';
+    document.getElementById('reopen-popup').style.display = 'none';
   }
 
   function submitEmail(e) {
@@ -162,11 +167,10 @@
     .then(response => response.text())
     .then(data => {
       document.getElementById('email-form').remove();
-document.querySelector('.popup-box button').remove();
-document.querySelector('.popup-box h2').remove();
-document.querySelector('.popup-box p').remove();
-document.getElementById('response-msg').style.display = 'block';
-      
+      document.querySelector('.popup-box button').remove();
+      document.querySelector('.popup-box h2').remove();
+      document.querySelector('.popup-box p').remove();
+      document.getElementById('response-msg').style.display = 'block';
     })
     .catch(error => {
       alert("There was an error. Please try again.");
@@ -175,10 +179,15 @@ document.getElementById('response-msg').style.display = 'block';
 
   window.onload = function() {
     setTimeout(() => {
-        document.getElementById('discount-popup').style.display = 'flex';
-      }, 1000);
+      document.getElementById('discount-popup').style.display = 'flex';
+    }, 1000);
   };
 </script>
+
+
+<button id="reopen-popup" onclick="reopenPopup()" style="display:none; position: fixed; bottom: 20px; right: 20px; background: #111; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; z-index: 2001;">
+  Get 10% Off
+</button>
 
 </body>
 </html>
