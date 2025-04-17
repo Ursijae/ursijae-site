@@ -126,34 +126,46 @@
   </footer>
 
 
+
+
 <div id="discount-popup" class="popup-overlay">
   <div class="popup-box">
     <span class="close-popup" onclick="dismissPopup()">&times;</span>
     <h2>Subscribe & Get 10% Off</h2>
-    <p>Enter your email below to receive a discount code in your inbox.</p>
-    <form onsubmit="submitEmail(event)">
-      <input type="email" placeholder="Your email" required style="width: 100%; padding: 0.5rem; margin: 1rem 0;">
+    <p>Enter your email below to receive a discount code:</p>
+    <form id="email-form" onsubmit="submitEmail(event)">
+      <input type="email" name="email" id="email" placeholder="Your email" required style="width: 100%; padding: 0.5rem; margin: 1rem 0;">
       <button type="submit" style="padding: 0.5rem 1rem;">Subscribe</button>
     </form>
+    <p id="response-msg" style="display:none; color:green; font-weight:bold;">Thanks! Check your inbox for the discount.</p>
     <button onclick="dismissPopup()" style="margin-top: 1rem; background: none; border: none; color: #999; cursor: pointer;">Not now</button>
   </div>
 </div>
 
 <script>
-  function closePopup() {
+  function dismissPopup() {
+    localStorage.setItem('popupDismissed', 'true');
     document.getElementById('discount-popup').style.display = 'none';
   }
 
   function submitEmail(e) {
     e.preventDefault();
-    alert('Thank you for subscribing! Your discount code is URSI10.');
-    localStorage.setItem('popupDismissed', 'true');
-    closePopup();
-  }
+    const email = document.getElementById('email').value;
 
-  function dismissPopup() {
-    localStorage.setItem('popupDismissed', 'true');
-    closePopup();
+    fetch("https://script.google.com/macros/s/AKfycbzc5Ff3c2R1gYth5HLBs3RuAWWuKn8oRrohYo1HdJilTGMOw6x5yMOMrV8zx7eqO-DB/exec", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: "email=" + encodeURIComponent(email)
+    })
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('email-form').style.display = 'none';
+      document.getElementById('response-msg').style.display = 'block';
+      localStorage.setItem('popupDismissed', 'true');
+    })
+    .catch(error => {
+      alert("There was an error. Please try again.");
+    });
   }
 
   window.onload = function() {
