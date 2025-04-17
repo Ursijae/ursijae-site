@@ -161,7 +161,7 @@
     })
     .then(response => response.text())
     .then(data => {
-      document.getElementById('email-form').style.display = 'none';
+      document.getElementById('email-form').remove(); document.querySelector('.popup-box button').remove();
       document.getElementById('response-msg').style.display = 'block';
       
     })
